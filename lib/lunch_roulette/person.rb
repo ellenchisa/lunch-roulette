@@ -26,7 +26,7 @@ class LunchRoulette
     end
 
     def inspect
-      return @section
+      return@section
       s = @name
       if @section
         s += " (#{@industry} - #{@section}"

@@ -15,12 +15,20 @@ class LunchRoulette
             file = "data/output/#{set.score.round(4)}_#{type}_#{set.name}.csv"
           end
 
+          total = 0
+          dupes = 0
+
           CSV.open(file, "w") do |csv|
             puts "#{type.capitalize} Set Candidate: #{set_index + 1}\n\n" if config.options[:verbose_output]
             csv << ['score', *config.match_thresholds]
             set.groups.each.with_index do |group, group_index|
               s = config.match_thresholds.map{|m| group.previous_lunches[m].to_a.join("\t") }
               o = "Group #{group_index + 1} of #{group.people.size} people: "
+              total += 1
+              sections = group.people.map{|person| person.section }.compact
+              if sections.uniq.size != sections.size
+                dupes += 1
+              end
               o << group.inspect
               o << "\n\tEmails: #{group.emails}"
               o << "\n\tSum Score: #{group.sum_score.round(4)}"
@@ -34,6 +42,7 @@ class LunchRoulette
             o += "~~~"
             puts o if config.options[:verbose_output]
             csv << ["SUM: #{set.score}", *set.previous_lunches.values]
+            puts "DUPLICATES: ", dupes, "of", total
           end
         end
       end

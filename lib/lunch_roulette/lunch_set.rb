@@ -71,15 +71,6 @@ class LunchRoulette
         @valid = false
       end
 
-      # Are two execs having lunch with each other? (Lunch 0 is the permanent exec lunch)
-      groups.map do |group|
-        group.previous_lunches.values.map do |previous_lunch|
-          if previous_lunch.to_a.flatten.include? 0
-            @valid = false
-          end
-        end
-      end
-
       # Are there any people with the same specialty in the same group?
       groups.map do |group|
         sections = group.people.map{|person| person.section }.compact

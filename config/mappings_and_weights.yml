@@ -34,5 +34,5 @@
   weights:
     gender: 0.4
     industry: 0.7
-    section: 0.9
+    section: 10
   min_lunch_group_size: 4
