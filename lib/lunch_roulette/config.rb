@@ -19,12 +19,16 @@ class LunchRoulette
       (2..min_lunch_group_size)
     end
 
-    def self.specialty_mappings
-      @@config['specialty_mappings']
+    def self.section_mappings
+      @@config['section_mappings']
     end
 
-    def self.team_mappings
-      @@config['team_mappings']
+    def self.industry_mappings
+      @@config['industry_mappings']
+    end
+
+     def self.gender_mappings
+      @@config['gender_mappings']
     end
 
     def self.maxes=(m)

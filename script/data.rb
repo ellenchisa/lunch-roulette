@@ -10,9 +10,9 @@ FLOOR_RANGE = (1..4).to_a
 PREVIOUS_LUNCHES = (1..staff.size/4).to_a
 
 CSV.open("data/new_staff.csv", "w") do |csv|
-  csv << %w(user_id name start_date floor team specialty previous_lunches)
+  csv << %w(user_id name start_date floor team section previous_lunches)
   staff.each.with_index do |luncher, index|
-    specialty = rand < 0.33333 ? specialties.sample(1) : [nil]
+    section = rand < 0.33333 ? specialties.sample(1) : [nil]
     csv << [ index + 1, luncher, DATE_RANGE.sample(1).first.strftime('%m/%d/%Y'), *FLOOR_RANGE.sample(1), *teams.sample(1), *specialty, PREVIOUS_LUNCHES.sample(2).join(",")]
   end
 end

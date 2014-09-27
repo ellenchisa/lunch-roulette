@@ -82,8 +82,8 @@ class LunchRoulette
 
       # Are there any people with the same specialty in the same group?
       groups.map do |group|
-        specialities = group.people.map{|person| person.specialty }.compact
-        if specialities.uniq.size != specialities.size
+        sections = group.people.map{|person| person.section }.compact
+        if sections.uniq.size < 3
           @valid = false
         end
       end

@@ -1,18 +1,17 @@
 class LunchRoulette
   class Person
-    attr_accessor :name, :lunchable, :previous_lunches, :features, :team, :specialty, :user_id, :start_date, :table, :email
+    attr_accessor :name, :lunchable, :previous_lunches, :features, :industry, :section, :user_id, :gender, :email
     def initialize(hash)
       @features = {}
       @lunchable = %w(true TRUE).include? hash['lunchable']
-      @team = hash['team']
+      @industry = hash['industry']
       @user_id = hash['user_id']
       @email = hash['email']
-      @specialty = hash['specialty']
-      @start_date = hash['start_date']
-      @features['days_here'] = (Date.today - Date.strptime(@start_date, '%m/%d/%Y')).to_i
-      @features['team'] = config.team_mappings[@team].to_i
-      @features['specialty'] = config.specialty_mappings[@specialty].to_i
-      @features['table'] = @table = hash['table'].to_i
+      @section = hash['section']
+      @gender = hash['gender']
+      @features['industry'] = config.industry_mappings[@industry].to_i
+      @features['section'] = config.section_mappings[@section].to_i
+      @features['gender'] = config.gender_mappings[@gender].to_i
       @name = hash['name']
       @previous_lunches = []
       if hash['previous_lunches']
@@ -27,13 +26,14 @@ class LunchRoulette
     end
 
     def inspect
+      return @section
       s = @name
-      if @specialty
-        s += " (#{@team} - #{@specialty}"
+      if @section
+        s += " (#{@industry} - #{@section}"
       else
-        s += " (#{@team}"
+        s += " (#{@industry}"
       end
-      s += ", Table #{@table})"
+      s += ", Gender #{@gender})"
       s
     end
 

@@ -78,6 +78,8 @@ class LunchRoulette
       puts "Valid Sets: #{candidates.size}"
     end
 
+    candidates.each{|c| puts c.score}
+    
     @results = {
       top: candidates.sort{|a,b| b.score <=> a.score }.first(config.options[:most_varied_sets].to_i),
       bottom: candidates.sort{|a,b| a.score <=> b.score }.first(config.options[:least_varied_sets].to_i)

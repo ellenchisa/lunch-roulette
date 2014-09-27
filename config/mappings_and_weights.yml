@@ -1,24 +1,38 @@
 ---
-  team_mappings:
-    Community Support: 100
-    Community: 90
-    Marketing: 80
-    Communications: 70
-    Operations: 50
-    Product: 40
-    Design: 30
-    Engineering: 20
-    Data: 0
-  specialty_mappings:
-    Backend: 0
-    Data: 20
-    Frontend: 30
-    Mobile: 50
+  industry_mappings:
+    Advertising/Marketing: 70
+    Biotechnology: 20
+    Consulting: 80
+    Consumer Products: 40
+    Education: 10
+    Energy: 30
+    Engineering: 10
+    Entrepreneurship: 10
     Finance: 100
-    Legal: 120
+    Government: 50
+    Health Care: 10
+    Media: 10
+    Military: 10
+    Nonprofit: 10
+    Real Estate: 10
+    Technology: 10
+    Transportation: 10
+  section_mappings:
+    New A: 10
+    New B: 20
+    New C: 30
+    New D: 40
+    New E: 50
+    New F: 60
+    New G: 70
+    New H: 80
+    New I: 90
+    New J: 100
+  gender_mappings:
+    Male: 1
+    Female: 2
   weights:
-    table: 0.4
-    days_here: 0.2
-    team: 0.9
-    specialty: 0.1
-  min_lunch_group_size: 5
+    gender: 0.4
+    industry: 0.7
+    section: 0.9
+  min_lunch_group_size: 4
